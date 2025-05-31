@@ -11,7 +11,7 @@ import {
 } from "react-icons/hi";
 import WelcomePopup from "../../components/UI/WelcomePopup";
 
-const LeadsPage = () => {
+const LeadWellCome = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [activeTab, setActiveTab] = useState("All");
@@ -100,4 +100,4 @@ const LeadsPage = () => {
   );
 };
 
-export default LeadsPage;
+export default LeadWellCome;

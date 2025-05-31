@@ -45,7 +45,7 @@ const InviteTeamPage = () => {
       return;
     }
     console.log(`Inviting team member with email: ${email}`);
-    navigate("/Lead-WellCome");
+    navigate("/Project-WellCome");
   };
 
   return (
@@ -73,7 +73,7 @@ const InviteTeamPage = () => {
           <Button type="submit">Save</Button>
           <Button
             type="button"
-            onClick={() => navigate("/Lead-WellCome")}
+            onClick={() => navigate("/Project-WellCome")}
             variant="skip"
           >
             Skip for now
