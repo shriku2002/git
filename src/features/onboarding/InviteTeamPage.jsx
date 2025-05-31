@@ -45,7 +45,7 @@ const InviteTeamPage = () => {
       return;
     }
     console.log(`Inviting team member with email: ${email}`);
-    navigate("/Project-WellCome");
+    navigate("/leads-welcome", { state: { showWelcomePopupOnLoad: true } });
   };
 
   return (
@@ -73,7 +73,7 @@ const InviteTeamPage = () => {
           <Button type="submit">Save</Button>
           <Button
             type="button"
-            onClick={() => navigate("/Project-WellCome")}
+            onClick={() => navigate("/leads-welcome", { state: { showWelcomePopupOnLoad: true } })}
             variant="skip"
           >
             Skip for now

@@ -11,19 +11,17 @@ import {
 } from "react-icons/hi";
 import WelcomePopup from "../../components/UI/WelcomePopup";
 
-const LeadWellCome = () => {
+const LeadsWelcomePage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [activeTab, setActiveTab] = useState("All");
 
-  // The popup's visibility is controlled by this state.
-  // It's initialized based on the state passed from the previous page (InviteTeamPage).
+  // The popup's visibility is controlled by this state
   const [showWelcomePopup, setShowWelcomePopup] = useState(
     location.state?.showWelcomePopupOnLoad || false
   );
 
-  // This effect clears the navigation state. This is a good practice to prevent the
-  // popup from re-appearing if the user refreshes or navigates back to this page.
+  // Clear navigation state after checking for popup visibility
   useEffect(() => {
     if (location.state?.showWelcomePopupOnLoad) {
       navigate(".", {
@@ -46,8 +44,6 @@ const LeadWellCome = () => {
   ];
 
   return (
-    // This is the main container for the LeadsPage.
-    // The WelcomePopup, when open, will appear on top of this content.
     <div className="min-h-screen bg-gray-100 p-4 sm:p-6 lg:p-8">
       <div className="mb-6 flex items-center">
         <button
@@ -87,11 +83,6 @@ const LeadWellCome = () => {
         </p>
       </div>
 
-      {/* The WelcomePopup is rendered here. It's controlled by the `showWelcomePopup` state.
-        When `isOpen` is true, the component renders its fixed-position overlay.
-        When `isOpen` is false, it renders `null` and has no effect on the page.
-        The `onClose` function simply updates the state to hide the popup.
-      */}
       <WelcomePopup
         isOpen={showWelcomePopup}
         onClose={() => setShowWelcomePopup(false)}
@@ -100,4 +91,4 @@ const LeadWellCome = () => {
   );
 };
 
-export default LeadWellCome;
+export default LeadsWelcomePage;
