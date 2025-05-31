@@ -14,6 +14,7 @@ import CreateCompanyPage from "./features/onboarding/CreateCompanyPage";
 import VerificationPage from "./features/onboarding/VerificationPage";
 import InviteTeamPage from "./features/onboarding/InviteTeamPage";
 import LeadWellCome from "./features/LeadsPage/LeadWellcome";
+import ProjectWelcomePage from "./features/ProjectPage/ProjectWelcomePage";
 import WelcomePopup from "./components/UI/WelcomePopup";
 
 import "./App.css";
@@ -42,6 +43,9 @@ function App() {
         {/* LeadsPage */}
         <Route path="/Lead-WellCome" element={<LeadWellCome />} />
         <Route path="/wellCome-PopUp-Lead" element={<WelcomePopup />} />
+        
+        {/* ProjectPage */}
+        <Route path="/Project-WellCome" element={<ProjectWelcomePage />} />
 
         <Route
           path="/dashboard"
