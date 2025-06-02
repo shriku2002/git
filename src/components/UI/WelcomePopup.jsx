@@ -23,6 +23,7 @@ const LeadManagementPattern = () => (
     </svg>
   </div>
 );
+
 const ProjectManagementPattern = () => (
   <div className="absolute bottom-0 left-0 right-0 h-32 opacity-20 pointer-events-none overflow-hidden">
     <svg
@@ -60,7 +61,7 @@ const ProjectManagementPattern = () => (
   </div>
 );
 
-const WelcomePopup = ({ isOpen, onClose }) => {
+const WelcomePopup = ({ isOpen, onClose, onAddFirstLead }) => {
   if (!isOpen) {
     return null;
   }
@@ -92,10 +93,7 @@ const WelcomePopup = ({ isOpen, onClose }) => {
               follow-ups, and convert leads to projects.
             </p>
             <Button
-              onClick={() => {
-                console.log("Add first Lead clicked");
-                onClose();
-              }}
+              onClick={onAddFirstLead}
               variant="primary"
               fullWidth={false}
             >

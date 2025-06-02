@@ -2,10 +2,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiFilter } from "react-icons/fi";
 import { IoArrowBackOutline } from "react-icons/io5";
+import AddLeadPopup from "../../components/UI/AddLeadPopup";
 
 const LeadsPage = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
+  const [showAddLeadPopup, setShowAddLeadPopup] = useState(false);
 
   const leads = [
     {
@@ -126,7 +128,10 @@ const LeadsPage = () => {
             <FiFilter className="text-gray-500" />
             Filter...
           </button>
-          <button className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center gap-2">
+          <button 
+            onClick={() => setShowAddLeadPopup(true)}
+            className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center gap-2"
+          >
             + Add Lead
           </button>
         </div>
@@ -173,6 +178,11 @@ const LeadsPage = () => {
           </div>
         </div>
       </div>
+
+      <AddLeadPopup 
+        isOpen={showAddLeadPopup} 
+        onClose={() => setShowAddLeadPopup(false)} 
+      />
     </div>
   );
 };

@@ -10,18 +10,17 @@ import {
   HiOutlineHome,
 } from "react-icons/hi";
 import WelcomePopup from "../../components/UI/WelcomePopup";
+import AddLeadPopup from "../../components/UI/AddLeadPopup";
 
 const LeadsWelcomePage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [activeTab, setActiveTab] = useState("All");
-
-  // The popup's visibility is controlled by this state
   const [showWelcomePopup, setShowWelcomePopup] = useState(
     location.state?.showWelcomePopupOnLoad || false
   );
+  const [showAddLeadPopup, setShowAddLeadPopup] = useState(false);
 
-  // Clear navigation state after checking for popup visibility
   useEffect(() => {
     if (location.state?.showWelcomePopupOnLoad) {
       navigate(".", {
@@ -42,6 +41,11 @@ const LeadsWelcomePage = () => {
     },
     { name: "Inspiration", icon: <HiOutlineLightBulb className="mr-2" /> },
   ];
+
+  const handleAddFirstLead = () => {
+    setShowWelcomePopup(false);
+    setShowAddLeadPopup(true);
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 p-4 sm:p-6 lg:p-8">
@@ -86,6 +90,12 @@ const LeadsWelcomePage = () => {
       <WelcomePopup
         isOpen={showWelcomePopup}
         onClose={() => setShowWelcomePopup(false)}
+        onAddFirstLead={handleAddFirstLead}
+      />
+
+      <AddLeadPopup 
+        isOpen={showAddLeadPopup} 
+        onClose={() => setShowAddLeadPopup(false)} 
       />
     </div>
   );
