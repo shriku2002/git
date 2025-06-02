@@ -13,6 +13,7 @@ import CreateOrganizationPage from "./features/onboarding/CreateOrganizationPage
 import CreateCompanyPage from "./features/onboarding/CreateCompanyPage";
 import VerificationPage from "./features/onboarding/VerificationPage";
 import InviteTeamPage from "./features/onboarding/InviteTeamPage";
+import LeadsPage from "./features/LeadsPage/LeadsPage";
 import LeadsWelcomePage from "./features/LeadsPage/LeadsWelcomePage";
 import ProjectWelcomePage from "./features/ProjectPage/ProjectWelcomePage";
 import WelcomePopup from "./components/UI/WelcomePopup";
@@ -30,15 +31,13 @@ function App() {
         <Route path="/user-purpose" element={<UserPurposePage />} />
         <Route path="/select-role" element={<UserRolePage />} />
         <Route path="/user-details" element={<UserDetailsPage />} />
-        <Route
-          path="/create-organization"
-          element={<CreateOrganizationPage />}
-        />
+        <Route path="/create-organization" element={<CreateOrganizationPage />} />
         <Route path="/create-company" element={<CreateCompanyPage />} />
         <Route path="/verification" element={<VerificationPage />} />
         <Route path="/invite-team" element={<InviteTeamPage />} />
 
         {/* LeadsPage */}
+        <Route path="/leads" element={<LeadsPage />} />
         <Route path="/leads-welcome" element={<LeadsWelcomePage />} />
         <Route path="/project-welcome" element={<ProjectWelcomePage />} />
         <Route path="/wellCome-PopUp-Lead" element={<WelcomePopup />} />
