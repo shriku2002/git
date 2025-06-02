@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
 
 const AddLeadPopup = ({ isOpen, onClose }) => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     phoneNumber: "",
@@ -17,6 +19,7 @@ const AddLeadPopup = ({ isOpen, onClose }) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
     onClose();
+    navigate("/leads");
   };
 
   if (!isOpen) return null;
