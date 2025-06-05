@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiPhone, FiMail, FiMapPin, FiUser, FiCalendar } from "react-icons/fi";
 import DashboardLayout from "../../components/Layout/DashboardLayout";
 
 const LeadDetailsPage = () => {
   const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState("All Activity");
 
   const clientInfo = {
     name: "Joshua Jest DVM",
@@ -30,10 +32,10 @@ const LeadDetailsPage = () => {
       date: "May 18, 2025, 9:14 PM",
     },
     {
-      type: "call",
-      title: "Call Logged",
-      description: "Call duration: 8 mins 40 secs",
-      date: "May 18, 2025, 2:37 PM",
+      type: "follow-up",
+      title: "Follow-up Scheduled",
+      description: "Vesica cattus valde.",
+      date: "May 15, 2025, 7:53 PM",
     },
     {
       type: "follow-up",
@@ -41,19 +43,9 @@ const LeadDetailsPage = () => {
       description: "Vesica cattus valde.",
       date: "May 15, 2025, 7:53 PM",
     },
-    {
-      type: "call",
-      title: "Call Logged",
-      description: "Degusto aut abundans textilis.",
-      date: "May 14, 2025, 8:14 AM",
-    },
-    {
-      type: "call",
-      title: "Call Logged",
-      description: "Via coruscus vicinus adfectus adipiscor tardus delicate clibanus vilitas.",
-      date: "May 8, 2025, 5:24 PM",
-    },
   ];
+
+  const tabs = ["All Activity", "Follow-Ups", "Sales", "Notes", "Call Logs"];
 
   return (
     <DashboardLayout>
@@ -170,28 +162,35 @@ const LeadDetailsPage = () => {
 
         {/* Activity Timeline */}
         <div className="bg-white rounded-lg p-6">
-          <h3 className="text-lg font-semibold text-gray-800 mb-6">Activity Timeline</h3>
+          <div className="flex justify-between items-center mb-6">
+            <h3 className="text-lg font-semibold text-gray-800">Activity Timeline</h3>
+            <button className="px-3 py-1.5 bg-orange-500 text-white rounded-lg text-sm hover:bg-orange-600">
+              Schedule Follow-up
+            </button>
+          </div>
           
-          <div className="flex space-x-4 mb-6">
-            <button className="text-green-600 border-b-2 border-green-600 pb-2">
-              All Activity
-            </button>
-            <button className="text-gray-500 hover:text-gray-700">
-              Follow-Ups
-            </button>
-            <button className="text-gray-500 hover:text-gray-700">
-              Call Logs
-            </button>
+          <div className="flex space-x-6 mb-6 border-b">
+            {tabs.map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`pb-2 ${
+                  activeTab === tab
+                    ? "text-gray-900 border-b-2 border-gray-900 -mb-[2px]"
+                    : "text-gray-500 hover:text-gray-700"
+                }`}
+              >
+                {tab}
+              </button>
+            ))}
           </div>
 
           <div className="space-y-6">
             {timeline.map((activity, index) => (
               <div key={index} className="flex">
                 <div className="flex flex-col items-center">
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                    activity.type === 'follow-up' ? 'bg-yellow-100' : 'bg-green-100'
-                  }`}>
-                    {activity.type === 'follow-up' ? '📅' : '📞'}
+                  <div className="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center">
+                    📅
                   </div>
                   {index < timeline.length - 1 && (
                     <div className="w-0.5 h-full bg-gray-200 my-2"></div>
