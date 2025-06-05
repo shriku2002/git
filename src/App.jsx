@@ -16,6 +16,7 @@ import InviteTeamPage from "./features/onboarding/InviteTeamPage";
 import LeadsPage from "./features/LeadsPage/LeadsPage";
 import LeadsWelcomePage from "./features/LeadsPage/LeadsWelcomePage";
 import LeadDetailsPage from "./features/LeadsPage/LeadDetailsPage";
+import FollowUpsPage from "./features/LeadsPage/FollowUpsPage";
 import ProjectWelcomePage from "./features/ProjectPage/ProjectWelcomePage";
 import WelcomePopup from "./components/UI/WelcomePopup";
 
@@ -40,6 +41,7 @@ function App() {
         {/* LeadsPage */}
         <Route path="/leads" element={<LeadsPage />} />
         <Route path="/leads/:id" element={<LeadDetailsPage />} />
+        <Route path="/leads/:id/follow-ups" element={<FollowUpsPage />} />
         <Route path="/leads-welcome" element={<LeadsWelcomePage />} />
         <Route path="/project-welcome" element={<ProjectWelcomePage />} />
         <Route path="/wellCome-PopUp-Lead" element={<WelcomePopup />} />
