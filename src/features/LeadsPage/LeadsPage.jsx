@@ -6,6 +6,7 @@ import DashboardLayout from "../../components/Layout/DashboardLayout";
 
 const initialLeads = [
   {
+    id: 1,
     name: "Alex Thompson",
     phone: "+1 (555) 1234567",
     siteAddress: "New York",
@@ -17,6 +18,7 @@ const initialLeads = [
     status: "New",
   },
   {
+    id: 2,
     name: "Alex Thompson",
     phone: "+1 (555) 1234567",
     siteAddress: "New York",
@@ -28,6 +30,7 @@ const initialLeads = [
     status: "On Hold",
   },
   {
+    id: 3,
     name: "Alex Thompson",
     phone: "+1 (555) 1234567",
     siteAddress: "New York",
@@ -39,6 +42,7 @@ const initialLeads = [
     status: "Follow Up",
   },
   {
+    id: 4,
     name: "Alex Thompson",
     phone: "+1 (555) 1234567",
     siteAddress: "New York",
@@ -50,6 +54,7 @@ const initialLeads = [
     status: "Converted",
   },
   {
+    id: 5,
     name: "Alex Thompson",
     phone: "+1 (555) 1234567",
     siteAddress: "New York",
@@ -93,6 +98,10 @@ const LeadsPage = () => {
     `w-full p-1 rounded-md text-xs border-gray-300 focus:outline-none focus:ring-1 focus:ring-green-500 ${getStatusColor(
       status
     )}`;
+
+  const handleRowClick = (leadId) => {
+    navigate(`/leads/${leadId}`);
+  };
 
   return (
     <DashboardLayout>
@@ -139,7 +148,11 @@ const LeadsPage = () => {
               </thead>
               <tbody className="bg-white">
                 {leads.map((lead, index) => (
-                  <tr key={index} className="border-t border-gray-200">
+                  <tr 
+                    key={lead.id} 
+                    className="border-t border-gray-200 cursor-pointer hover:bg-gray-50"
+                    onClick={() => handleRowClick(lead.id)}
+                  >
                     <td className="px-6 py-4 whitespace-nowrap">{lead.name}</td>
                     <td className="px-6 py-4 whitespace-nowrap">{lead.phone}</td>
                     <td className="px-6 py-4 whitespace-nowrap">{lead.siteAddress}</td>
@@ -154,6 +167,7 @@ const LeadsPage = () => {
                           value={lead.status}
                           onChange={(e) => handleStatusChange(e.target.value, index)}
                           onBlur={() => setEditingIndex(null)}
+                          onClick={(e) => e.stopPropagation()}
                           autoFocus
                           className={selectClasses(lead.status)}
                         >
@@ -165,7 +179,10 @@ const LeadsPage = () => {
                         </select>
                       ) : (
                         <span
-                          onClick={() => setEditingIndex(index)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setEditingIndex(index);
+                          }}
                           className={`cursor-pointer px-3 py-1 rounded-full text-xs font-medium inline-flex items-center ${getStatusColor(
                             lead.status
                           )}`}
